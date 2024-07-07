@@ -6,6 +6,19 @@
     <title>map</title>
   </head>
   <body>
+    <div class="home">
+      <div desc="后盾人">houdunren</div>
+      <div desc="开源系统">hdcms</div>
+    </div>
+    <div>
+      <form action="" onsubmit="return post()">
+        接受协议:
+        <input type="checkbox" name="agreement" message="请接受接受协议" />
+        我是学生:
+        <input type="checkbox" name="student" message="网站只对学生开放" />
+        <input type="submit" />
+      </form>
+    </div>
     <script>
       // *****Map是一组键值对的结构，用户解决以往不能用对象作为键的问题*****
       // 1.可以接受一个数组作为参数，该数组成员是一个表示键值对的数组
@@ -24,9 +37,9 @@
       //   console.log(m.get(arr)); // 对象是引用类型，当对象作为map键的时候，必须使用当前对象
       //   console.log(m.get(["xiexie"])); // undefined 这样是无法获取
       // 4.获取数量
-      console.log(m.size);
+      //   console.log(m.size);
       // 5.元素检测
-      console.log(m.has(arr));
+      //   console.log(m.has(arr));
       // 6.删除元素
       //   m.delete(arr);
       //   console.log(m.has(arr));
@@ -42,9 +55,40 @@
         // console.log(123, key, value);
       }
       // 10.数组转换，可以使用展开语法（...）或者Array.from静态方法将map类型转换为数组
-      console.log([...m]); // [Array(2), Array(2), Array(2), Array(2), Array(2)]
-      console.log(Array.from(m)); // [Array(2), Array(2), Array(2), Array(2), Array(2)]
+      //   console.log([...m]); // [Array(2), Array(2), Array(2), Array(2), Array(2)]
+      //   console.log(Array.from(m)); // [Array(2), Array(2), Array(2), Array(2), Array(2)]
     </script>
-    <script></script>
+    <script>
+      // 1.map操作dom
+      const divs = document.querySelectorAll(".home div");
+      const divMap = new Map();
+      divs.forEach((div) => {
+        divMap.set(div, {
+          content: div.getAttribute("desc"),
+        });
+      });
+      divMap.forEach((content, dom) => {
+        dom.addEventListener("click", function () {
+          alert(content.content);
+        });
+      });
+      // 2.表单提交
+      function post() {
+        let map = new Map();
+        const inputs = document.querySelectorAll("[message]");
+        inputs.forEach((item) => {
+          map.set(item, {
+            message: item.getAttribute("message"),
+            status: item.checked,
+          });
+        });
+
+        //遍历Map数据
+        return [...map].every(([item, config]) => {
+          config.status || alert(config.message);
+          return config.status;
+        });
+      }
+    </script>
   </body>
 </html>
