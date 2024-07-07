@@ -1,9 +1,15 @@
-# map 基础使用
-
-\***_Map 是一组键值对的结构，用户解决以往不能用对象作为键的问题_**
-
-1.可以接受一个数组作为参数，该数组成员是一个表示键值对的数组
-特点：极快的查找速度，函数对象基本类型都可以作为键值对
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>map</title>
+  </head>
+  <body>
+    <script>
+      // *****Map是一组键值对的结构，用户解决以往不能用对象作为键的问题*****
+      // 1.可以接受一个数组作为参数，该数组成员是一个表示键值对的数组
+      // 特点：*极快的查找速度，函数对象基本类型都可以作为键值对
 
       let m = new Map([
         ["user", "user111111"],
@@ -38,3 +44,7 @@
       // 10.数组转换，可以使用展开语法（...）或者Array.from静态方法将map类型转换为数组
       console.log([...m]); // [Array(2), Array(2), Array(2), Array(2), Array(2)]
       console.log(Array.from(m)); // [Array(2), Array(2), Array(2), Array(2), Array(2)]
+    </script>
+    <script></script>
+  </body>
+</html>
