@@ -38,3 +38,14 @@
       // 10.数组转换，可以使用展开语法（...）或者Array.from静态方法将map类型转换为数组
       console.log([...m]); // [Array(2), Array(2), Array(2), Array(2), Array(2)]
       console.log(Array.from(m)); // [Array(2), Array(2), Array(2), Array(2), Array(2)]
+
+# WeakMap
+
+WeakMap 对象是一组键/值对的集
+
+键名必须是对象
+WeaMap 对键名是弱引用的，键值是正常引用
+垃圾回收不考虑 WeaMap 的键名，不会改变引用计数器，键在其他地方不被引用时即删除
+因为 WeakMap 是弱引用，由于其他地方操作成员可能会不存在，所以不可以进行 forEach( )遍历等操作
+也是因为弱引用，WeaMap 结构没有 keys( )，values( )，entries( )等方法和 size 属性
+当键的外部引用删除时，希望自动删除数据时使用 WeakMap
